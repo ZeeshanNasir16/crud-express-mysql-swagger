@@ -29,7 +29,7 @@
             "description": "OK",
             "schema": {
               "type": "array",
-              "$ref": "#/components/schemas/Emps"
+              "$ref": "#/components/schemas/Employee_Res"
             }
           },
           "500": {
@@ -47,7 +47,7 @@
             "application/json": {
               "schema": {
                 "type": "object",
-                "$ref": "#/components/schemas/Employee"
+                "$ref": "#/components/schemas/Employee_Req"
               }
             }
           }
@@ -92,7 +92,7 @@
           "200": {
             "description": "OK",
             "schema": {
-              "$ref": "#/components/schemas/Employee"
+              "$ref": "#/components/schemas/Employee_Res"
             }
           },
           "400": {
@@ -112,7 +112,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/Employee"
+                "$ref": "#/components/schemas/Employee_Req"
               }
             }
           }
@@ -128,10 +128,7 @@
         ],
         "responses": {
           "200": {
-            "description": "OK",
-            "schema": {
-              "$ref": "#/components/schemas/Employee"
-            }
+            "description": "OK"
           },
           "400": {
             "description": "Failed. Bad post data."
@@ -168,15 +165,7 @@
   },
   "components": {
     "schemas": {
-      "Employee": {
-        "required": [
-          "fullname",
-          "email",
-          "password",
-          "salary",
-          "role",
-          "address"
-        ],
+      "Employee_Req": {
         "type": "object",
         "properties": {
           "fullname": {
@@ -203,6 +192,42 @@
           "address": {
             "type": "string",
             "example": "abc, xyz"
+          }
+        },
+        "xml": {
+          "name": "emp"
+        }
+      },
+      "Employee_Res": {
+        "type": "object",
+        "properties": {
+          "emp_id": {
+            "type": "integer"
+          },
+          "fullname": {
+            "type": "string"
+          },
+          "email": {
+            "type": "string"
+          },
+          "password": {
+            "type": "string"
+          },
+          "open_password": {
+            "type": "string"
+          },
+          "salary": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "role": {
+            "type": "string"
+          },
+          "address": {
+            "type": "string"
+          },
+          "createdAt": {
+            "type": "date"
           }
         },
         "xml": {
